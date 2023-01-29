@@ -18,7 +18,7 @@ class ClientConfig:
         self.__api_root = "{}{}".format(self.__server, cfg['server']['api_root'])
         self.__get_card = "{}{}".format(self.__api_root, cfg['rest']['get_card'])
         self.__get_cards = "{}{}".format(self.__api_root, cfg['rest']['get_cards'])
-        self.__get_card_png = "{}{}".format(self.__server, cfg['non_rest']['get_card_png'])
+        self.__get_card_png = "{}".format(cfg['non_rest']['get_card_png'])
         self.__cache_max_age = cfg['cache']['max_age_in_seconds']
 
     @property

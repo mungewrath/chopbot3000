@@ -8,7 +8,7 @@ rest:
         get_cards: 'cards'
 
 non_rest:
-        get_card_png: 'card_image/{}.png'
+        get_card_png: 'https://static.nrdbassets.com/v1/large/{}.jpg'
 
 cache:
         max_age_in_seconds: 28800

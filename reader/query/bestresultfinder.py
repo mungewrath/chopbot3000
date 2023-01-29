@@ -28,4 +28,7 @@ class BestResultFinder:
 
         logger.info("Card query return location {}, score {}".format(max_location, max_score))
 
-        return self.__card_store.get_card_by_index(max_location)
+        if max_location is not None:
+            return self.__card_store.get_card_by_index(max_location)
+        else:
+            return None

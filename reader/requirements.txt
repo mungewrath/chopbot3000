@@ -1,3 +1,4 @@
 requests
 ptvsd
 PyYAML
+boto3
