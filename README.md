@@ -84,11 +84,10 @@ Tests are defined in the `tests` folder in this project. Use PIP to install the 
 
 ```bash
 chopbot3000$ pip install -r tests/requirements.txt --user
-# unit test
+# unit test (WIP, need to restructure)
 chopbot3000$ python -m pytest tests/unit -v
-# integration test, requiring deploying the stack first.
-# Create the env variable AWS_SAM_STACK_NAME with the name of the stack we are testing
-chopbot3000$ AWS_SAM_STACK_NAME=<stack-name> python -m pytest tests/integration -v
+# integration test
+chopbot3000$ pytest
 ```
 
 ## Cleanup

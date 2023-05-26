@@ -16,7 +16,6 @@ class BestResultFinder:
 
         return self.__cache[query]
 
-    # TODO: optimize here. O(N) is not ideal.
     def __get_max_scored_card(self, query):
         max_score = 0
         max_location = None

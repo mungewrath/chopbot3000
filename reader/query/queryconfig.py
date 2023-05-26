@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 class QueryConfig:
     expected_keys = {"weights": ["full_title", "partial_title", "full_text", "partial_text", "default"]}
 
-    def __init__(self, config_path="./query/queryconfig.yml"):
+    def __init__(self, config_path="./config/queryconfig.yml"):
         if not os.path.isfile(config_path):
             logger.critical('Unable to load the configuration file')
             raise FileNotFoundError

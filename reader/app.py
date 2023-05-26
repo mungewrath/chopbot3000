@@ -1,6 +1,6 @@
 import json
 from cardrepository import CardRepository
-import ptvsd
+# import ptvsd
 import time
 import urllib.parse
 import requests
