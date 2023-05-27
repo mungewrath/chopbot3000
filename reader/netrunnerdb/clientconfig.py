@@ -5,7 +5,7 @@ logger = logging.getLogger(__name__)
 
 
 class ClientConfig:
-    def __init__(self, config_path="./netrunnerdb/clientconfig.yml"):
+    def __init__(self, config_path="./config/clientconfig.yml"):
         if not os.path.isfile(config_path):
             logger.critical('Unable to load the configuration file')
             raise FileNotFoundError

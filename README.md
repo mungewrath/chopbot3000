@@ -14,32 +14,12 @@ The application uses several AWS resources, including Lambda functions and an AP
 - The Lambda takes too long to start up (especially on cold start), so API Gateway dispatches the message and immediately returns a 200 to the caller. The Lambda will call the `response_url` asynchronously, once it's had time to do its work.
 - Currently no auth in place - a good candidate would be the token provided by Slack slash command integration. Rate limiting provides a basic level of protection.
 
-## Deploy the sample application
-
-The Serverless Application Model Command Line Interface (SAM CLI) is an extension of the AWS CLI that adds functionality for building and testing Lambda applications. It uses Docker to run your functions in an Amazon Linux environment that matches Lambda. It can also emulate your application's build environment and API.
-
-To use the SAM CLI, you need the following tools.
-
-* SAM CLI - [Install the SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
-* [Python 3 installed](https://www.python.org/downloads/)
-* Docker - [Install Docker community edition](https://hub.docker.com/search/?type=edition&offering=community)
-
-To build and deploy your application for the first time, run the following in your shell:
+## Deploying
 
 ```bash
 sam build --use-container
-sam deploy --guided
+sam deploy --guided # Use chopbot-stage (Stage) or chopbot (Prod)
 ```
-
-The first command will build the source of your application. The second command will package and deploy your application to AWS, with a series of prompts:
-
-* **Stack Name**: The name of the stack to deploy to CloudFormation. This should be unique to your account and region, and a good starting point would be something matching your project name.
-* **AWS Region**: The AWS region you want to deploy your app to.
-* **Confirm changes before deploy**: If set to yes, any change sets will be shown to you before execution for manual review. If set to no, the AWS SAM CLI will automatically deploy application changes.
-* **Allow SAM CLI IAM role creation**: Many AWS SAM templates, including this example, create AWS IAM roles required for the AWS Lambda function(s) included to access AWS services. By default, these are scoped down to minimum required permissions. To deploy an AWS CloudFormation stack which creates or modifies IAM roles, the `CAPABILITY_IAM` value for `capabilities` must be provided. If permission isn't provided through this prompt, to deploy this example you must explicitly pass `--capabilities CAPABILITY_IAM` to the `sam deploy` command.
-* **Save arguments to samconfig.toml**: If set to yes, your choices will be saved to a configuration file inside the project, so that in the future you can just re-run `sam deploy` without parameters to deploy changes to your application.
-
-You can find your API Gateway Endpoint URL in the output values displayed after deployment.
 
 ## Use the SAM CLI to build and test locally
 
@@ -84,11 +64,10 @@ Tests are defined in the `tests` folder in this project. Use PIP to install the 
 
 ```bash
 chopbot3000$ pip install -r tests/requirements.txt --user
-# unit test
+# unit test (WIP, need to restructure)
 chopbot3000$ python -m pytest tests/unit -v
-# integration test, requiring deploying the stack first.
-# Create the env variable AWS_SAM_STACK_NAME with the name of the stack we are testing
-chopbot3000$ AWS_SAM_STACK_NAME=<stack-name> python -m pytest tests/integration -v
+# integration test
+chopbot3000$ pytest
 ```
 
 ## Cleanup

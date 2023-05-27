@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "18fb5264-a73d-44d3-8be1-5ad5baf4f889",
+		"name": "Chopbot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3661533"
+	},
+	"item": [
+		{
+			"name": "Stage sample request - Ken Tenma",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "rTyCTVa4LMQ2gMI0PSpwGxQA",
+							"type": "text"
+						},
+						{
+							"key": "team_id",
+							"value": "T024F3C1G",
+							"type": "text"
+						},
+						{
+							"key": "team_domain",
+							"value": "pariveda",
+							"type": "text"
+						},
+						{
+							"key": "channel_id",
+							"value": "C04C9LWDZR8",
+							"type": "text"
+						},
+						{
+							"key": "channel_name",
+							"value": "netrunner",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "URYK9H94M",
+							"type": "text"
+						},
+						{
+							"key": "user_name",
+							"value": "jim.brown",
+							"type": "text"
+						},
+						{
+							"key": "command",
+							"value": "/chopbot",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "Ken Tenma",
+							"type": "text"
+						},
+						{
+							"key": "is_enterprise_install",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "response_url",
+							"value": "https://localhost/commands/T024F3C1G/5342000715232/v2303Z0HJCZR1O6LrugOLR8uz",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://06uyxicl8h.execute-api.us-west-2.amazonaws.com/Stage/search/",
+					"protocol": "https",
+					"host": [
+						"06uyxicl8h",
+						"execute-api",
+						"us-west-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"Stage",
+						"search",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
