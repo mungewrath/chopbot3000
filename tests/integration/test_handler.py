@@ -1,10 +1,15 @@
 import json
 
 import pytest
+import os
 from unittest import mock
 from unittest.mock import patch
 
 from reader import app
+
+# Band-aid to help it find the configs.
+# Configs need to live in the reader/ directory since that is what SAM bundles up during deployment
+os.chdir('reader')
 
 @pytest.fixture()
 def apigw_event():
@@ -64,13 +69,14 @@ def apigw_event():
 
 @pytest.fixture()
 def ndb_stub():
-    with open("./tests/integration/netrunnerdb_stub.json") as f:
+    with open("../tests/integration/netrunnerdb_stub.json") as f:
         data = json.load(f)
         return data
 
 @patch("requests.post")
 @patch("requests.get")
-def test_lambda_handler(get, post, apigw_event, ndb_stub):
+def test_ken_tenma(get, post, apigw_event, ndb_stub):
+
     mocked_response = mock.Mock()
 
     get.return_value = mocked_response
@@ -88,3 +94,18 @@ def test_lambda_handler(get, post, apigw_event, ndb_stub):
 
     assert ret["statusCode"] == 200
     assert data["response_text"] == f"Here's what I found for `{query_text}`: \n{image_path}"
+
+
+
+# TODO: Can be a unit test instead of integration test
+@patch("requests.post")
+@patch("requests.get")
+def test_when_error_encountered_posts_failure_to_slack(get, post, apigw_event):
+    get.side_effect = Exception('Something failed')
+
+    try:
+        app.lambda_handler(apigw_event, "")
+    except Exception:
+        pass
+
+    post.assert_called_once_with("https://localhost/commands/T024F3C1G/5342000715232/v2303Z0HJCZR1O6LrugOLR8u'", json={ 'text': "Something went wrong:worried:: <class 'Exception'> Something failed", 'response_type': 'in_channel' })
