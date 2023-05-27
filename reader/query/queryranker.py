@@ -14,8 +14,10 @@ class QueryRanker:
         query = self.__sanitize_query(query)
         if not query:
             return 0
+        
+        words = query.split(" ")
 
-        return self.__calculate_weight(card, query)
+        return sum([self.__calculate_weight(card, w) for w in words])
 
     def __calculate_weight(self, card, query):
         weight = self.__get_title_weight(card, query)
