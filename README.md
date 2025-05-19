@@ -18,7 +18,9 @@ The application uses several AWS resources, including Lambda functions and an AP
 
 ```bash
 sam build --use-container
-sam deploy --guided # Use chopbot-stage (Stage) or chopbot (Prod)
+# Use the name chopbot-stage (for Stage) or chopbot (for Prod)
+# Best I can remember, chopbot-stage isn't hooked up anywhere; it's for testing via Postman.
+sam deploy --guided
 ```
 
 ## Use the SAM CLI to build and test locally
